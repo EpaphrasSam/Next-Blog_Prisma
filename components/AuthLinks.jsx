@@ -7,7 +7,7 @@ import { useTheme } from "next-themes";
 
 const AuthLinks = () => {
   const [open, setOpen] = useState(false);
-  const status = false;
+  const status = true;
   const { theme } = useTheme();
 
   return (

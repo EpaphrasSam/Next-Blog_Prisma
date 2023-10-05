@@ -10,6 +10,8 @@ module.exports = {
     extend: {
       colors: {
         dark: "#0f172a",
+        LsoftBg: "#f8f8f8",
+        DsoftBg: "#1f273a",
         tcolor: "#ddd",
       },
     },
