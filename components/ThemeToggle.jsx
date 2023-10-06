@@ -1,20 +1,19 @@
 "use client";
 
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React from "react";
 import { useTheme } from "next-themes";
 
 const ThemeToggle = () => {
+  // const forcedTheme = localStorage.getItem("theme");
   const { theme, setTheme } = useTheme();
+  // {forcedTheme: forcedTheme}
   const toggle = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
 
-  useEffect(() => {
-    if (theme === "undefined") {
-      setTheme("light");
-    }
-  }, [theme]);
+    localStorage.setItem("theme", newTheme);
+  };
 
   return (
     <div

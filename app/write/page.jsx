@@ -5,6 +5,9 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import React, { useState } from "react";
 import { FaPlus, FaImage, FaExternalLinkAlt, FaVideo } from "react-icons/fa";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
+import Loader from "../../components/Loader";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -12,8 +15,16 @@ const Write = () => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
 
+  const { status } = useSession();
+  const router = useRouter();
+
+  if (status === "authenticated") {
+    router.push("/");
+  }
+
   return (
-    <div>
+    <div className="relative">
+      {status === "loading" && <Loader />}
       <input
         type="text"
         placeholder="Title"
@@ -45,7 +56,7 @@ const Write = () => {
           value={value}
           onChange={setValue}
           placeholder="Tell your story..."
-          className="border border-gray-500 rounded-lg w-full"
+          className="rounded-lg w-full"
         />
       </div>
       <button className="absolute top-[26px] right-[20px] border-none py-2 px-5 flex items-center justify-center bg-[#1a8917] text-white rounded-[20px] hover:opacity-80 cursor-pointer">

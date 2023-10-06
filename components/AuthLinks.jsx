@@ -4,15 +4,16 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { HiMenu } from "react-icons/hi";
 import { useTheme } from "next-themes";
+import { signOut, useSession } from "next-auth/react";
 
 const AuthLinks = () => {
   const [open, setOpen] = useState(false);
-  const status = true;
+  const { status } = useSession();
   const { theme } = useTheme();
 
   return (
     <>
-      {!status ? (
+      {status !== "authenticated" ? (
         <Link href="/login" className="hidden sm:flex">
           Login
         </Link>
@@ -21,7 +22,9 @@ const AuthLinks = () => {
           <Link href="/write" className="hidden sm:flex">
             Write
           </Link>
-          <span className="cursor-pointer hidden sm:flex">Logout</span>
+          <span className="cursor-pointer hidden sm:flex" onClick={signOut}>
+            Logout
+          </span>
         </>
       )}
       <HiMenu
@@ -41,9 +44,20 @@ const AuthLinks = () => {
           <Link href="/" className="sm:hidden">
             About
           </Link>
-          <Link href="/login" className="sm:hidden">
-            Login
-          </Link>
+          {!status ? (
+            <Link href="/login" className="sm:hidden">
+              Login
+            </Link>
+          ) : (
+            <>
+              <Link href="/write" className="sm:hidden">
+                Write
+              </Link>
+              <span className="cursor-pointer sm:hidden" onClick={signOut}>
+                Logout
+              </span>
+            </>
+          )}
         </div>
       )}
     </>
