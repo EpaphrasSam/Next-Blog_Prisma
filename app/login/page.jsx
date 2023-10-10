@@ -16,7 +16,7 @@ const Login = () => {
 
   return (
     <div className="relative flex justify-center items-center mt-14 ">
-      {status === "loading" && <Loader />}
+      {/* {status === "loading" && <Loader />} */}
       <div className="p-[100px] max-sm:p-[70px] max-[440px]:p-[40px] bg-LsoftBg dark:bg-DsoftBg flex flex-col items-center justify-center gap-6 rounded-xl">
         <div
           className="flex gap-3 p-4 rounded-[10px] border-none text-white font-bold cursor-pointer bg-[#ff5555]"

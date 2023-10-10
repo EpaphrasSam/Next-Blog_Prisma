@@ -5,9 +5,9 @@ import React from "react";
 import { useTheme } from "next-themes";
 
 const ThemeToggle = () => {
-  // const forcedTheme = localStorage.getItem("theme");
-  const { theme, setTheme } = useTheme();
-  // {forcedTheme: forcedTheme}
+  const forcedTheme = localStorage.getItem("theme");
+  const { theme, setTheme } = useTheme({ forcedTheme: forcedTheme });
+
   const toggle = () => {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);

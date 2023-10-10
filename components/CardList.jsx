@@ -12,15 +12,24 @@ const CardList = async ({ page, cat }) => {
   const hasPrev = POST_PER_PAGE * (page - 1) > 0;
   const hasNext = POST_PER_PAGE * (page - 1) + POST_PER_PAGE < count;
 
+  const pageCount = Math.ceil(count / POST_PER_PAGE);
+
   return (
     <div className="flex-[5]">
-      {!cat && <p className="my-8 mx-0 text-2xl font-bold">Recent Posts</p>}
+      {!cat && <p className="my-8 mx-0 text-2xl font-bold">Latest Posts</p>}
       <div className={`${cat && "mt-8"}`}>
         {posts?.map((post) => (
           <Card key={post.id} post={post} />
         ))}
       </div>
-      <Pagination page={page} hasNext={hasNext} hasPrev={hasPrev} />
+      {pageCount > 1 && (
+        <Pagination
+          page={page}
+          hasNext={hasNext}
+          hasPrev={hasPrev}
+          pageCount={pageCount}
+        />
+      )}
     </div>
   );
 };

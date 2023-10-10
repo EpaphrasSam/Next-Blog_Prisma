@@ -1,18 +1,34 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import {
-  getCategoryBackgroundColor,
-  popularCategories,
-} from "../lib/categories";
+// import { getCategoryBackgroundColor } from "../lib/categories";
 import { getCategories } from "../services";
+
+const getCategoryBackgroundColor = (name) => {
+  switch (name) {
+    case "style":
+      return "bg-[#57c4ff9A]";
+    case "fashion":
+      return "bg-[#da85c79A]";
+    case "food":
+      return "bg-[#7fb8819A]";
+    case "travel":
+      return "bg-[#ff79579A]";
+    case "culture":
+      return "bg-[#ffb84f9A]";
+    case "coding":
+      return "bg-[#5e4fffaA]";
+    default:
+      return "bg-gray-500";
+  }
+};
 
 const CategoryList = async () => {
   const categories = await getCategories();
 
   return (
     <div>
-      <p className="my-6 mx-0 font-bold text-2xl">Popular Categories</p>
+      <p className="my-6 mx-0 font-bold text-2xl">Categories</p>
       <div className="flex flex-wrap gap-5 ">
         {categories?.map((category) => (
           <Link

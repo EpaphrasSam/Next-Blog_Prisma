@@ -13,7 +13,7 @@ const Blog = ({ searchParams }) => {
       </p>
       <div className="flex gap-12">
         <CardList page={page} cat={cat} />
-        <Menu />
+        <Menu cat={cat} />
       </div>
     </div>
   );

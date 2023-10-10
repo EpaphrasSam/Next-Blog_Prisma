@@ -18,9 +18,11 @@ export const getCategories = async () => {
   }
 };
 
-export const getPosts = async (page, cat) => {
+export const getPosts = async (page, cat, popular) => {
   try {
-    const response = await axios.get(`api/posts?page=${page}&cat=${cat || ""}`);
+    const response = await axios.get(
+      `api/posts?page=${page || 1}&cat=${cat || ""}&popular=${popular || false}`
+    );
 
     if (response.status !== 200) {
       throw new Error("Failed");
@@ -46,4 +48,30 @@ export const getUniquePost = async (slug) => {
   }
 };
 
-export const getComments = async () => {};
+export const createComment = async (desc, slug) => {
+  try {
+    const response = await axios.post("api/comments", { desc, slug });
+
+    if (response.status !== 200) {
+      throw new Error("Failed");
+    }
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const createPost = async (data) => {
+  try {
+    const response = await axios.post("api/posts", data);
+
+    if (response.status !== 200) {
+      throw new Error("Failed");
+    }
+
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

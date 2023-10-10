@@ -37,7 +37,12 @@ const BlogPage = async ({ params }) => {
         </div>
         <div className="flex-1 h-[350px] relative max-lg:hidden">
           {post.img && (
-            <Image src={post.img} alt="Image" fill className="object-fit" />
+            <Image
+              src={post.img}
+              alt="Image"
+              fill
+              className="object-cover rounded-md"
+            />
           )}
         </div>
       </div>
@@ -49,7 +54,7 @@ const BlogPage = async ({ params }) => {
             dangerouslySetInnerHTML={{ __html: post?.desc }}
           />
           <div>
-            <Comments />
+            <Comments postSlug={params.slug} />
           </div>
         </div>
         <Menu />

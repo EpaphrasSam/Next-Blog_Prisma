@@ -14,7 +14,7 @@ const Navbar = () => {
         <Image src="/youtube.png" alt="facebook" width={24} height={24} />
       </div>
       <div className="flex-1 max-xl:text-left text-center text-3xl font-bold max-xl:text-[32px] max-md:text-[24px]">
-        SINE
+        Blogosphere
       </div>
       <div className="flex gap-5 flex-1 text-base max-xl:text-[18px] max-xl:gap-4 max-sm:justify-end">
         <ThemeToggle />

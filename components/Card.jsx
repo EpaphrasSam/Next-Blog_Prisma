@@ -29,7 +29,7 @@ const Card = ({ post }) => {
           <p className="text-xl font-bold">{post.title}</p>
         </Link>
         <p className="text-base font-[300] text-gray-800 dark:text-gray-400">
-          {post.desc.substring(0, 200)}
+          {post.excerpt}
         </p>
         <Link
           href={`/posts/${post.slug}`}
