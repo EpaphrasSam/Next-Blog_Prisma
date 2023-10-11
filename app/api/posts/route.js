@@ -7,13 +7,29 @@ export const GET = async (req) => {
   const page = searchParams.get("page");
   const cat = searchParams.get("cat");
   const isPopular = searchParams.get("popular") === "true";
+  const isRandom = searchParams.get("random") === "true";
 
   const POST_PER_PAGE = 5;
 
   try {
-    let posts;
+    let posts = [];
+    const totalPosts = await prisma.post.count();
 
-    if (isPopular) {
+    if (isRandom) {
+      posts = await prisma.post.findFirst({
+        take: 1,
+        skip: Math.floor(Math.random() * (totalPosts - 1)),
+        select: {
+          id: true,
+          img: true,
+          title: true,
+          excerpt: true,
+          slug: true,
+        },
+      });
+
+      return new NextResponse(JSON.stringify({ posts }, { status: 200 }));
+    } else if (isPopular) {
       const currentTime = new Date().getTime();
       posts = await prisma.post.findMany({
         include: {
@@ -37,7 +53,7 @@ export const GET = async (req) => {
         const popularityScore =
           views * 0.5 + comments * 0.25 + (1 - timeDiffInDays / 1) * 0.25;
 
-        return { ...post, popularityScore }; // Spread individual post properties
+        return { ...post, popularityScore };
       });
 
       posts.sort((a, b) => b.popularityScore - a.popularityScore);

@@ -1,8 +1,8 @@
 import { create } from "zustand";
 
-const categoriesStore = create((set) => ({
-  categories: [],
-  setCategories: (categories) => set({ categories }),
+const postStore = create((set) => ({
+  post: [],
+  setPost: (post) => set({ post }),
 }));
 
 const authStore = create((set) => ({
@@ -10,4 +10,4 @@ const authStore = create((set) => ({
   setIsAuthenticated: (isAuthenticated) => set({ isAuthenticated }),
 }));
 
-export { categoriesStore, authStore };
+export { postStore, authStore };

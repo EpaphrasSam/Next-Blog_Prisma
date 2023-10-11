@@ -16,11 +16,10 @@ const CardList = async ({ page, cat }) => {
 
   return (
     <div className="flex-[5]">
-      {!cat && <p className="my-8 mx-0 text-2xl font-bold">Latest Posts</p>}
+      {!cat && <p className="my-8 mx-0 text-2xl font-bold">All Blogs</p>}
       <div className={`${cat && "mt-8"}`}>
-        {posts?.map((post) => (
-          <Card key={post.id} post={post} />
-        ))}
+        {posts.length > 0 &&
+          posts?.map((post) => <Card key={post.id} post={post} />)}
       </div>
       {pageCount > 1 && (
         <Pagination

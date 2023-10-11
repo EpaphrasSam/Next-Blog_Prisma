@@ -16,9 +16,14 @@ export const authOptions = {
       clientSecret: process.env.GITHUB_SECRET ?? "",
     }),
   ],
-  session: {
-    strategy: "database",
+  pages: {
+    signIn: "/",
   },
+  secret: process.env.NEXTAUTH_SECRET,
+  session: {
+    strategy: "jwt",
+  },
+  debugger: process.env.NODE_ENV === "development",
 };
 
 export const getAuthSession = () => getServerSession(authOptions);

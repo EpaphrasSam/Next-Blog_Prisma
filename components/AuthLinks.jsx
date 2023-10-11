@@ -14,15 +14,18 @@ const AuthLinks = () => {
   return (
     <>
       {status !== "authenticated" ? (
-        <Link href="/login" className="hidden sm:flex">
+        <Link href="/login" className="hidden sm:flex hover:opacity-70">
           Login
         </Link>
       ) : (
         <>
-          <Link href="/write" className="hidden sm:flex">
+          <Link href="/write" className="hidden sm:flex hover:opacity-70">
             Write
           </Link>
-          <span className="cursor-pointer hidden sm:flex" onClick={signOut}>
+          <span
+            className="cursor-pointer hidden sm: hover:opacity-70"
+            onClick={signOut}
+          >
             Logout
           </span>
         </>
@@ -35,25 +38,28 @@ const AuthLinks = () => {
       />
       {open && (
         <div className="absolute top-[100px] left-0 w-full h-95% dark:bg-dark bg-white flex flex-col items-center justify-center gap-[50px] text-2xl">
-          <Link href="/" className="sm:hidden">
+          <Link href="/" className="sm:hidden hover:opacity-70">
             Home
           </Link>
-          <Link href="/" className="sm:hidden">
+          <Link href="/" className="sm:hidden hover:opacity-70">
             Contact
           </Link>
-          <Link href="/" className="sm:hidden">
+          <Link href="/" className="sm:hidden hover:opacity-70">
             About
           </Link>
           {!status ? (
-            <Link href="/login" className="sm:hidden">
+            <Link href="/login" className="sm:hidden hover:opacity-70">
               Login
             </Link>
           ) : (
             <>
-              <Link href="/write" className="sm:hidden">
+              <Link href="/write" className="sm:hidden hover:opacity-70">
                 Write
               </Link>
-              <span className="cursor-pointer sm:hidden" onClick={signOut}>
+              <span
+                className="cursor-pointer sm:hidden hover:opacity-70"
+                onClick={signOut}
+              >
                 Logout
               </span>
             </>

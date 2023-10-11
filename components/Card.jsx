@@ -25,14 +25,14 @@ const Card = ({ post }) => {
             {post.catSlug}
           </span>
         </div>
-        <Link href={`/posts/${post.slug}`} className="hover:opacity-70">
+        <Link href={`/blog/${post.slug}`} className="hover:opacity-70">
           <p className="text-xl font-bold">{post.title}</p>
         </Link>
         <p className="text-base font-[300] text-gray-800 dark:text-gray-400">
           {post.excerpt}
         </p>
         <Link
-          href={`/posts/${post.slug}`}
+          href={`/blog/${post.slug}`}
           className=" border-b-[gray] border-solid border-b-[0.5px] w-max py-1 px-0 hover:opacity-70"
         >
           Read More

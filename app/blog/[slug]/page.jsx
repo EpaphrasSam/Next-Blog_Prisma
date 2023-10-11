@@ -23,7 +23,7 @@ const BlogPage = async ({ params }) => {
                   alt="Image"
                   height={50}
                   width={50}
-                  className="object-fit w-12 h-12 rounded-full"
+                  className="object-cover w-12 h-12 rounded-full"
                 />
               )}
             </div>

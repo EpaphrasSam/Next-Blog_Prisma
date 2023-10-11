@@ -18,10 +18,12 @@ export const getCategories = async () => {
   }
 };
 
-export const getPosts = async (page, cat, popular) => {
+export const getPosts = async (page, cat, popular, random) => {
   try {
     const response = await axios.get(
-      `api/posts?page=${page || 1}&cat=${cat || ""}&popular=${popular || false}`
+      `api/posts?page=${page || 1}&cat=${cat || ""}&popular=${
+        popular || false
+      }&random=${random || false}`
     );
 
     if (response.status !== 200) {
