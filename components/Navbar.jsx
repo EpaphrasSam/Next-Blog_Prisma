@@ -21,7 +21,7 @@ const Navbar = () => {
       <div className="flex-1 max-xl:text-left text-center text-3xl font-bold max-xl:text-[32px] max-md:text-[24px]">
         Blogosphere
       </div>
-      <div className="flex gap-5 flex-1 text-base max-xl:text-[18px] max-xl:gap-4 max-sm:justify-end">
+      <div className="flex gap-5 flex-1 text-base max-xl:text-[18px] max-xl:gap-4 max-sm:justify-end ">
         {/* <DynamicThemeToggle /> */}
         <ThemeToggle />
         <Link href="/" className="max-sm:hidden hover:opacity-70">

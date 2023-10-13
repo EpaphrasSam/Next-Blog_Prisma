@@ -122,11 +122,23 @@ export const POST = async (req) => {
   }
 
   try {
-    const { catSlug, ...data } = await req.json();
+    const { catSlug, slug, ...data } = await req.json();
 
-    const post = await prisma.post.create({
+    const existingPost = await prisma.post.findUnique({
+      where: {
+        slug,
+      },
+    });
+
+    let modifiedSlug = slug;
+    if (existingPost) {
+      modifiedSlug = `${slug}-1`;
+    }
+
+    await prisma.post.create({
       data: {
         ...data,
+        slug: modifiedSlug,
         user: { connect: { email: session.user.email } },
         cat: { connect: { slug: catSlug } },
       },

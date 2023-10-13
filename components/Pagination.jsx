@@ -83,7 +83,7 @@ const Pagination = ({ page, hasPrev, hasNext, pageCount }) => {
   };
 
   return (
-    <div className="justify-between flex pb-4">
+    <div className="justify-between flex pb-4 max-sm:justify-evenly">
       <button
         disabled={!hasPrev}
         className={`w-24 border-none p-4 ${
@@ -96,7 +96,9 @@ const Pagination = ({ page, hasPrev, hasNext, pageCount }) => {
         Previous
       </button>
 
-      <div className="flex items-center space-x-2">{renderPageButtons()}</div>
+      <div className="flex items-center space-x-2 max-sm:hidden">
+        {renderPageButtons()}
+      </div>
 
       <button
         disabled={!hasNext}
