@@ -21,4 +21,4 @@ export default withAuth({
   },
 });
 
-export const config = { matcher: [...protectedRoutes, "/login"] };
+export const config = { matcher: ["/write", "/login"] };

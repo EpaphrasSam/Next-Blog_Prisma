@@ -30,7 +30,7 @@ export default async function RootLayout({ children }) {
               <div className="max-w-[1536px] mx-auto  px-20 max-2xl:max-w-[1366px] max-xl:max-w-[1024px] max-lg:max-w-[768px] max-lg:px-10 max-md:max-w-[640px] max-sm:max-w-[475px]">
                 {/* <Suspense fallback={<Loader />}> */}
                 <Navbar />
-                {children}
+                <div className="flex-1 min-h-screen">{children}</div>
                 <Footer />
                 {/* </Suspense> */}
               </div>

@@ -1,4 +1,5 @@
 import axios from "../utils/axios";
+import { notFound } from "next/navigation";
 
 export const getCategories = async () => {
   try {
@@ -26,8 +27,8 @@ export const getPosts = async (page, cat, popular, random) => {
       }&random=${random || false}`
     );
 
-    if (response.status !== 200) {
-      throw new Error("Failed");
+    if (response.data.error) {
+      notFound();
     }
 
     return response.data;
@@ -40,8 +41,8 @@ export const getUniquePost = async (slug) => {
   try {
     const response = await axios.get(`api/posts/${slug}`);
 
-    if (response.status !== 200) {
-      throw new Error("Failed");
+    if (response.data.error) {
+      notFound();
     }
 
     return response.data;

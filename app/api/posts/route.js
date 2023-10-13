@@ -15,6 +15,19 @@ export const GET = async (req) => {
     let posts = [];
     const totalPosts = await prisma.post.count();
 
+    if (cat) {
+      // catFilter = { catSlug: cat };
+      const catExists = await prisma.category.findFirst({
+        where: { slug: cat },
+      });
+
+      if (!catExists) {
+        return new NextResponse(
+          JSON.stringify({ error: "Category not found" }, { status: 404 })
+        );
+      }
+    }
+
     if (isRandom) {
       posts = await prisma.post.findFirst({
         take: 1,
@@ -94,7 +107,7 @@ export const GET = async (req) => {
   } catch (error) {
     console.error(error);
     return new NextResponse(
-      JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
+      JSON.stringify({ error: "Something went wrong!" }, { status: 500 })
     );
   }
 };
@@ -125,7 +138,7 @@ export const POST = async (req) => {
   } catch (error) {
     console.log(error);
     return new NextResponse(
-      JSON.stringify({ message: "Something went wrong!" }, { status: 500 })
+      JSON.stringify({ error: "Something went wrong!" }, { status: 500 })
     );
   }
 };
