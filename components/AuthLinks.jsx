@@ -23,7 +23,7 @@ const AuthLinks = () => {
             Write
           </Link>
           <span
-            className="cursor-pointer hidden sm: hover:opacity-70"
+            className="cursor-pointer hidden sm:flex hover:opacity-70"
             onClick={signOut}
           >
             Logout
