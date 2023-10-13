@@ -1,12 +1,22 @@
 "use client";
 
-import { signIn, useSession } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 import React from "react";
 import { FaGoogle, FaGithub, FaFacebook } from "react-icons/fa";
+import Loader from "../../components/Loader";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
+  const { status } = useSession();
+  const router = useRouter();
+
+  if (status === "authenticated") {
+    router.push("/");
+  }
+
   return (
     <div className="relative flex justify-center items-center mt-14 ">
+      {/* {status === "loading" && <Loader />} */}
       <div className="p-[100px] max-sm:p-[70px] max-[440px]:p-[40px] bg-LsoftBg dark:bg-DsoftBg flex flex-col items-center justify-center gap-6 rounded-xl">
         <div
           className="flex gap-3 p-4 rounded-[10px] border-none text-white font-bold cursor-pointer bg-[#ff5555]"
