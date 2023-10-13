@@ -47,7 +47,7 @@ const AuthLinks = () => {
           <Link href="/" className="sm:hidden hover:opacity-70">
             About
           </Link>
-          {!status ? (
+          {status !== "authenticated" ? (
             <Link href="/login" className="sm:hidden hover:opacity-70">
               Login
             </Link>
